@@ -6,7 +6,7 @@ const { Comments } = require('../models/Comments');
 router.get('/get-comments', (req, res, next) => {
     Comments.find((err, Comments) => {
         res.json(Comments)
-    })
+    }).populate(['user', 'post'])
 })
 
 router.post('/create-comments', (req, res, next) => {

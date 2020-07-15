@@ -6,7 +6,7 @@ const { Posts } = require('../models/Posts');
 router.get('/get-posts', (req, res, next) => {
     Posts.find((err, Posts) => {
         res.json(Posts)
-    })
+    }).populate(['user', 'tag'])
 })
 
 router.get('/get-posts-by-id/:id', (req, res) => {

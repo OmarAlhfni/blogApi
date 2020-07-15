@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const Schemas = new Schema({
     name: String,
     email: String,
+    isAdmin: { type: Boolean, default: false },
     password: String
 })
 

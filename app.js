@@ -9,6 +9,11 @@ var passport = require('./helper/auth')
 // cors --
 var cors = require('cors')
 
+var hashPass = require('./helper/passwoed');
+
+// hashPass('123').then('true').catch('false');
+// to check if success or faild of function
+
 // router ----
 var indexRout = require('./routes/index')
 var usersRouter = require('./routes/users');
@@ -16,7 +21,6 @@ var Tags = require('./routes/Tags')
 var Posts = require('./routes/Posts')
 var Comments = require('./routes/Comments')
 var Catagories = require('./routes/Catagories')
-var Users = require('./routes/Users');
 var Register = require('./routes/Register')
 
 var app = express();
@@ -38,14 +42,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+var auth = passport.authenticate('jwt')
 // router links
 app.use('/ind', indexRout)
 app.use('/users', usersRouter);
 app.use('/Tags', Tags);
-app.use('/Posts', passport.authenticate('jwt'), Posts);
-app.use('/Comments', passport.authenticate('jwt'), Comments);
+app.use('/Posts', auth, Posts);
+app.use('/Comments', Comments);
 app.use('/Catagories', Catagories);
-app.use('/Users', Users);
 app.use('/Register', Register)
 
 
