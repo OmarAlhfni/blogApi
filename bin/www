@@ -10,7 +10,6 @@ var http = require('http');
 
 var mongoose = require('mongoose')
 
-// mongoose.connect('mongodb://localhost:27017/Blogg', {
 mongoose.connect('mongodb+srv://adminomar:adminomar@cluster0.ord72.mongodb.net/blogApi?retryWrites=true&w=majority', {
 
   useNewUrlParser: true,
