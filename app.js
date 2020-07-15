@@ -45,13 +45,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var auth = passport.authenticate('jwt')
 // router links
-app.use('/ind', indexRout)
-app.use('/users', usersRouter);
-app.use('/Tags', Tags);
-app.use('/Posts', auth, Posts);
-app.use('/Comments', Comments);
-app.use('/Catagories', Catagories);
-app.use('/Register', Register)
+app.get('/' , (req , res)=>{
+  res.json("Test")
+})
+// app.use('/ind', indexRout)
+// app.use('/users', usersRouter);
+// app.use('/Tags', Tags);
+// app.use('/Posts', auth, Posts);
+// app.use('/Comments', Comments);
+// app.use('/Catagories', Catagories);
+// app.use('/Register', Register)
 
 
 // catch 404 and forward to error handler
